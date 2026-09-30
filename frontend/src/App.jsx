@@ -4,7 +4,7 @@ import Sidebar from './components/Sidebar';
 import Viewport3D from './components/Viewport3D';
 import ValidationModal from './components/ValidationModal';
 
-const API_BASE = import.meta.env.VITE_API_BASE || (window.location.port === '5173' ? 'http://localhost:8000' : '');
+const API_BASE = import.meta.env.VITE_API_BASE || (window.location.port === '5173' ? 'http://localhost:8000' : 'https://deapthwizard.onrender.com');
 
 export default function App() {
   const [activeSample, setActiveSample] = useState('urban');
