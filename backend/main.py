@@ -21,10 +21,44 @@ from metrics import AccuracyValidator
 from sample_generator import SampleDatasetGenerator
 from fastapi.staticfiles import StaticFiles
 
+import asyncio
+import urllib.request
+from contextlib import asynccontextmanager
+
+async def keep_alive_worker():
+    """Background task to ping self every 12 minutes to prevent cloud sleep."""
+    await asyncio.sleep(60) # Wait 1 min after startup
+    while True:
+        try:
+            # Render provides RENDER_EXTERNAL_URL automatically
+            url = os.getenv("RENDER_EXTERNAL_URL") or os.getenv("KEEP_ALIVE_URL")
+            if url:
+                target = f"{url.rstrip('/')}/api/health"
+                req = urllib.request.Request(target, headers={"User-Agent": "DepthWizard-KeepAlive/1.0"})
+                with urllib.request.urlopen(req, timeout=10) as response:
+                    print(f"[Keep-Alive] Self ping success: {target} (Status: {response.status})")
+            else:
+                # Local heartbeat
+                print("[Keep-Alive] Heartbeat active (Set RENDER_EXTERNAL_URL in production)")
+        except Exception as e:
+            print(f"[Keep-Alive] Warning: Ping failed: {e}")
+        
+        # Ping every 12 minutes (720 seconds) - Render sleeps after 15 min
+        await asyncio.sleep(720)
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup
+    task = asyncio.create_task(keep_alive_worker())
+    yield
+    # Shutdown
+    task.cancel()
+
 app = FastAPI(
     title="DepthWizard API",
     description="Single-View Height Estimation & 3D Flythrough for Remote Sensing",
-    version="2.0.0"
+    version="2.0.0",
+    lifespan=lifespan
 )
 
 # Enable CORS for local dev frontend
