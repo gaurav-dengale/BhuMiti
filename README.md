@@ -2,7 +2,7 @@
 
 > **ISRO SIH Problem Statement ID: 26175**  
 > **Theme: Disaster Management / Earth Observation**  
-> **Organization: Indian Space Research Organisation (ISRO)**
+> **Organization: Indian Space Research Organisation (ISRO)** | **Team:** Burning Hammer
 
 DepthWizard is an end-to-end geospatial intelligence pipeline and 3D visualization suite that transforms single-view optical RGB remote sensing imagery (PNG, JPG, or GeoTIFF) into high-precision metric Digital Surface Models (DSMs) and renders interactive, navigable 3D terrain flythroughs in real time.
 
