@@ -1,5 +1,5 @@
 """
-DepthWizard FastAPI Backend Server
+BhuMiti FastAPI Backend Server
 Unified Geospatial Elevation Estimation & 3D Analytics Pipeline
 """
 
@@ -34,7 +34,7 @@ async def keep_alive_worker():
             url = os.getenv("RENDER_EXTERNAL_URL") or os.getenv("KEEP_ALIVE_URL")
             if url:
                 target = f"{url.rstrip('/')}/api/health"
-                req = urllib.request.Request(target, headers={"User-Agent": "DepthWizard-KeepAlive/1.0"})
+                req = urllib.request.Request(target, headers={"User-Agent": "BhuMiti-KeepAlive/1.0"})
                 with urllib.request.urlopen(req, timeout=10) as response:
                     print(f"[Keep-Alive] Self ping success: {target} (Status: {response.status})")
             else:
@@ -55,7 +55,7 @@ async def lifespan(app: FastAPI):
     task.cancel()
 
 app = FastAPI(
-    title="DepthWizard API",
+    title="BhuMiti API",
     description="Single-View Height Estimation & 3D Flythrough for Remote Sensing",
     version="2.0.0",
     lifespan=lifespan
@@ -119,7 +119,7 @@ def serve_index():
         return FileResponse(index_file)
     return {
         "status": "online",
-        "system": "DepthWizard AI Core",
+        "system": "BhuMiti AI Core",
         "docs": "/docs"
     }
 
@@ -127,7 +127,7 @@ def serve_index():
 def health_check():
     return {
         "status": "online",
-        "system": "DepthWizard AI Core",
+        "system": "BhuMiti AI Core",
         "engine": engine.model_name,
         "device": engine.device
     }
@@ -349,7 +349,7 @@ def export_geotiff():
     return Response(
         content=buf,
         media_type="image/tiff",
-        headers={"Content-Disposition": "attachment; filename=DepthWizard_DSM_Metric.tif"}
+        headers={"Content-Disposition": "attachment; filename=BhuMiti_DSM_Metric.tif"}
     )
 
 
@@ -365,7 +365,7 @@ def export_obj():
     return Response(
         content=buf,
         media_type="text/plain",
-        headers={"Content-Disposition": "attachment; filename=DepthWizard_Terrain.obj"}
+        headers={"Content-Disposition": "attachment; filename=BhuMiti_Terrain.obj"}
     )
 
 
@@ -381,7 +381,7 @@ def export_gltf():
     return Response(
         content=buf,
         media_type="model/gltf-binary",
-        headers={"Content-Disposition": "attachment; filename=DepthWizard_Terrain.glb"}
+        headers={"Content-Disposition": "attachment; filename=BhuMiti_Terrain.glb"}
     )
 
 
@@ -396,5 +396,5 @@ def export_xyz():
     return Response(
         content=buf,
         media_type="text/plain",
-        headers={"Content-Disposition": "attachment; filename=DepthWizard_PointCloud.xyz"}
+        headers={"Content-Disposition": "attachment; filename=BhuMiti_PointCloud.xyz"}
     )

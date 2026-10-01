@@ -17,7 +17,7 @@ export default function Header({
         </div>
         <div>
           <div className="brand-title">
-            DEPTHWIZARD <span className="badge-accent">ISRO PS-26175</span>
+            BhuMiti <span className="badge-accent">ISRO PS-26175</span>
           </div>
           <div className="brand-sub">Monocular Aerial DSM & 3D Flythrough Engine</div>
         </div>

@@ -1,5 +1,5 @@
 """
-DepthWizard 3D Mesh & Point Cloud Generator
+BhuMiti 3D Mesh & Point Cloud Generator
 Generates textured 3D OBJ, GLTF, PLY, and XYZ Point Cloud files from DSM elevation arrays.
 """
 

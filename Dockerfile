@@ -1,4 +1,4 @@
-# Multi-stage Dockerfile for Unified DepthWizard Deployment
+# Multi-stage Dockerfile for Unified BhuMiti Deployment
 # Stage 1: Build React Frontend
 FROM node:22-alpine AS frontend-builder
 WORKDIR /app/frontend

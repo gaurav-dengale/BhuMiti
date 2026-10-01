@@ -1,5 +1,5 @@
 """
-DepthWizard Accuracy Validation & Geospatial Metrics Suite
+BhuMiti Accuracy Validation & Geospatial Metrics Suite
 Calculates RMSE, MAE, R^2, Mean Bias Error, and structural height deviations.
 """
 

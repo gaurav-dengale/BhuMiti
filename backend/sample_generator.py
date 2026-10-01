@@ -1,5 +1,5 @@
 """
-DepthWizard Synthetic Remote Sensing Sample Generator
+BhuMiti Synthetic Remote Sensing Sample Generator
 Generates realistic multi-terrain aerial scenes with corresponding Ground Truth DEMs.
 """
 

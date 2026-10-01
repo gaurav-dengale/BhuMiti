@@ -1,5 +1,5 @@
 """
-DepthWizard Geospatial Scale Calibration Engine
+BhuMiti Geospatial Scale Calibration Engine
 Converts Relative Disparity / rDSM to Metric Absolute Elevation (DSM in meters).
 """
 
